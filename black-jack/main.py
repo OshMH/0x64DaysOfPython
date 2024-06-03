@@ -18,7 +18,7 @@ cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 import random
 
 def get_rand():
-    return cards[random.randint(0, len(cards)-1)]
+    return random.choice(cards)
 class Hand():
     hand:list = []
     stand:bool = False
@@ -37,17 +37,22 @@ class Game():
     dealer = Hand()
     player = Hand()
     def __init__(self):
-        print(f"playing blaccckjack\n your cards: {self.player.hand}, current score: {sum(self.player.hand)}\n Dealer's first card: {self.dealer.hand[0]}")
+        print("playing blaccckjack")
     def play(self):
         while(sum(self.player.hand) < 21 and sum(self.dealer.hand) <21):
+            self.showPlayerCards()
+            self.showDealerCard(1)
+
             answer = input("Type 'y' to get another card, type 'n' to pass: ")
             if answer =='y':
                 self.player.hit()
+
             if answer =='n':
                 while(sum(self.dealer.hand) < sum(self.player.hand) and sum(self.dealer.hand) < 17):
                     self.dealer.hit()
-            self.checkWinner()
-            break
+                break
+        
+        self.checkWinner()
         
                 
                 
@@ -59,22 +64,18 @@ class Game():
             print(f"Computer's first card: {self.dealer.hand[0]}")
         if args[0] == 2:
             print(f"Computer's hand: {self.dealer.hand}, current score: {sum(self.dealer.hand)}")
+    
+    
     def checkWinner(self):
+        self.showPlayerCards()
+        self.showDealerCard(2)
         if sum(self.player.hand) > 21:
-            self.showPlayerCards()
-            self.showDealerCard(2)
-            print("you busted!\n The dealer wins!")
+            print("you busted!\nThe dealer wins!")
         elif sum(self.dealer.hand) > 21:
-            self.showPlayerCards()
-            self.showDealerCard(2)
             print("you win!")
         elif sum(self.dealer.hand) > sum(self.player.hand):
-            self.showPlayerCards()
-            self.showDealerCard(2)
             print("Dealer wins!")
         else:
-            self.showPlayerCards()
-            self.showDealerCard(2)
             print("you win!")
 
 
@@ -87,6 +88,9 @@ def main():
         game = Game()
         game.play()
         continuePlaying = input("Do you want to play another game?")
+        if continuePlaying =='y':
+            game.dealer.restart()
+            game.player.restart()
             
         
 
