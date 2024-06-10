@@ -11,7 +11,7 @@ colors = ["red", "blue", "yellow", "cyan", "green", "orange"]
 user_bet = screen.textinput(title="Make your bet", prompt="Which turlte will win the race? Enter a code: ")
 
 
-class racer_turtles:
+class RacerTurtles:
     def __init__(self, color, y_offset):
         self.turtle_name = Turtle("turtle")
         self.turtle_name.penup()
@@ -24,7 +24,7 @@ class racer_turtles:
     def get_xcord(self):
         return self.turtle_name.xcor()
 
-class start_race:
+class StartRace:
     def __init__(self, all_turtles):
         self.turtles = all_turtles
         self.is_race_on = True
@@ -45,9 +45,9 @@ class start_race:
 
 all_turtles = []
 for y_offset,color in enumerate(colors):
-    all_turtles.append(racer_turtles(color,y_offset*30))
+    all_turtles.append(RacerTurtles(color,y_offset*30))
 
-race = start_race(all_turtles)
+race = StartRace(all_turtles)
 race.start_race()
 
 screen.exitonclick()
