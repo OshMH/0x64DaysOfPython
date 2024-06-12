@@ -32,3 +32,4 @@ class CarManager:
     def game_over(self):
         for car in self.cars:
             car.clear()
+            
