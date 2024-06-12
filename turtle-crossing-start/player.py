@@ -11,8 +11,13 @@ class Player(Turtle):
         self.player.color("black")
         self.player.setheading(90)
         self.player.penup()
+        self.last_pos = (0,0)
         self.player.goto(0,-280)
     def move_forward(self):
         self.player.fd(MOVE_DISTANCE)
     def reset(self):
         self.player.goto(0,-280)
+    def get_position(self):
+        return self.player.pos()
+    def game_over(self):
+        self.player.clear()
