@@ -1,11 +1,9 @@
 import pandas
-
-
 class State_checker():
-
     def __init__(self):
         self.correct_answers = []
         self.state_data = pandas.read_csv("50_states.csv")
+        self.state_data['state'] = self.state_data['state'].apply(str.lower)
     
     def check_answer(self,user_answer):
         """Checks if the state is in the data, if it is,
