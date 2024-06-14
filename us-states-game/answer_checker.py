@@ -10,8 +10,16 @@ class State_checker():
             it will return the series of that data. If its
             not it will return false"""
         
-        return user_answer in self.state_data.values
+        if user_answer in self.state_data.values:
+            self.correct_answers.append(user_answer)
+            return True
+        else:
+            return False
     def get_xy(self, user_answer):
         return self.state_data[self.state_data['state'] == user_answer]
-
+    
+    def create_answer_csv(self):
+        for answer in self.correct_answers:
+            self.state_data = self.state_data.drop(self.state_data[self.state_data['state'] == answer].index)
+        self.state_data.to_csv("states_to_learn.csv")    
     

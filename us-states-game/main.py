@@ -23,4 +23,5 @@ while(game_is_on):
         state_namer.name_state(user_answer, int(state_data.x.iloc[0]),int(state_data.y.iloc[0]))
         screen.title(f"US state guesser")
 
-turtle.mainloop()
+# states_to_learn.csv
+answer_checker.create_answer_csv()
