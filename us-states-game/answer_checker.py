@@ -13,9 +13,11 @@ class State_checker():
         if user_answer in self.state_data.values:
             self.correct_answers.append(user_answer)
             return True
-        else:
-            return False
+        
+        return False
+   
     def get_xy(self, user_answer):
+        
         return self.state_data[self.state_data['state'] == user_answer]
     
     def create_answer_csv(self):
