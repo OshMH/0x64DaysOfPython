@@ -3,7 +3,8 @@ import tkinter
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
-
+def save():
+    pass
 # ---------------------------- UI SETUP ------------------------------- #
 
 window = tkinter.Tk()
@@ -36,6 +37,7 @@ password_entry.grid(row=3, column=1,sticky="W")
 
 email_entry = tkinter.Entry(width=40)
 email_entry.grid(sticky="W", row=2, column=1, columnspan=2)
+email_entry.insert(tkinter.END, "oshhettiarachchi@gmail.com")
 
 # buttons
 generate_password_button = tkinter.Button(text="Generate Password", bg="white", borderwidth=0, padx=0, pady=0)
